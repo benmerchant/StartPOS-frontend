@@ -1,0 +1,30 @@
+{
+  "name": "startpos-front",
+  "version": "0.1.0",
+  "description": "Front end for StartPOS app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benmerchant/StartPOS-frontend.git"
+  },
+  "keywords": [
+    "angularjs",
+    "grunt"
+  ],
+  "author": "Ben Merchant <benjaminmerchant@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benmerchant/StartPOS-frontend/issues"
+  },
+  "homepage": "https://github.com/benmerchant/StartPOS-frontend#readme",
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.1"
+  }
+}
