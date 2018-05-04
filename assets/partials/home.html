@@ -1,5 +1,8 @@
 <h1>Welcome, {{name}}</h1>
 
-<p>please login</p>
-
-<p>you are logged in</p>
+<div ng-show="{{globals.auth}}">
+  <p>you are logged in</p>
+</div>
+<div ng-hide="{{globals.auth}}">
+  <p>please login</p>
+</div>

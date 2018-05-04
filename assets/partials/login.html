@@ -1,1 +1,24 @@
-<h1>login page</h1>
+<div class="col-md-6 offset-md-3 pt-3">
+  <h1>Login to Start POS</h1>
+  <form novalidate name="loginForm" ng-submit="login()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input ng-model="email" ng-class="{'text-danger': loginForm.email.$dirty && !loginForm.email.$valid}" class="form-control" type="email" name="email" id="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input ng-model="password" class="form-control" type="password" name="password" id="password" required>
+    </div>
+
+    <div class="form-group">
+      <input ng-disabled="loginForm.$invalid" type="submit" class="btn btn-primary btn-lg" value="Login">
+    </div>
+
+  </form>
+  <div ng-show="loginForm.email.$dirty && !loginForm.email.$valid">
+    Email field has been modified AND it is not valid
+  </div>
+  <div ng-show="!loginForm.password.$valid">
+    Password field has not been filled
+  </div>
+</div>

@@ -4,7 +4,7 @@
   "description": "Front end for StartPOS app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "protractor test/conf.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,14 @@
   },
   "homepage": "https://github.com/benmerchant/StartPOS-frontend#readme",
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "grunt": "^1.0.2",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^3.3.0",
-    "grunt-contrib-watch": "^1.0.1"
+    "grunt-contrib-watch": "^1.0.1",
+    "mocha": "^5.1.1",
+    "protractor": "^5.3.1"
   }
 }

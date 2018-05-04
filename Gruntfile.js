@@ -12,6 +12,7 @@ module.exports = function(grunt){
           'app/vendor/angular.js',
           'app/vendor/angular-route.js',
           'app/vendor/angular-sanitize.js',
+          'app/vendor/angular-cookies.js',
           'app/module.js',
           'app/components/**/*.js',
           'app/views/**/*.js'
