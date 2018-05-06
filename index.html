@@ -9,7 +9,27 @@
     <!-- <link rel="icon" href="../../favicon.ico"> -->
     <title>Start POS</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <script src="assets/js/startpos-frontGrunt.min.js" type="text/javascript"></script>
+    <!-- production grunt file -->
+    <!-- <script src="assets/js/startpos-frontGrunt.min.js" type="text/javascript"></script> -->
+
+    <!-- development direct reference to scripts -->
+    <script src="app/vendor/jquery.js" type="text/javascript"></script>
+    <script src="app/vendor/bootstrap.js" type="text/javascript"></script>
+    <script src="app/vendor/angular.js" type="text/javascript"></script>
+    <script src="app/vendor/angular-route.js" type="text/javascript"></script>
+    <script src="app/vendor/angular-sanitize.js" type="text/javascript"></script>
+    <script src="app/vendor/angular-cookies.js" type="text/javascript"></script>
+    <script src="app/module.js" type="text/javascript"></script>
+    <script src="app/views/main.controller.js" type="text/javascript"></script>
+    <script src="app/views/home.controller.js" type="text/javascript"></script>
+    <script src="app/views/dashboard.controller.js" type="text/javascript"></script>
+    <script src="app/views/login.controller.js" type="text/javascript"></script>
+    <script src="app/views/employee.controller.js" type="text/javascript"></script>
+    <script src="app/views/menu.controller.js" type="text/javascript"></script>
+    <script src="app/services/getEmployees.services.js" type="text/javascript"></script>
+
+
+
   </head>
   <body ng-app="app" ng-cloak>
     <div ng-controller="MainController">
@@ -22,7 +42,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li ng-class="pageClass('/')" class="nav-item">
-                <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
               </li>
               <li ng-class="pageClass('/add-contact')" class="nav-item">
                 <a class="nav-link" href="/employees">Employees</a>
@@ -30,10 +50,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="/menu">Menu</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" ng-show="{{1}}">
                 <a class="nav-link" href="/login">Logout</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" ng-hide="{{globals.auth}}">
                 <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
@@ -50,24 +70,6 @@
 
       <div class="container">
         <div class="ng-view"></div>
-        <!-- <div class="starter-template"> -->
-          <!-- <h1>Bootstrap starter template</h1>
-          <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p> -->
-
-          <!-- {{#if success_msg}}
-              <div class="alert alert-success">{{success_msg}}</div>
-            {{/if}}
-
-            {{#if error_msg}}
-              <div class="alert alert-danger">{{error_msg}}</div>
-            {{/if}}
-
-            {{#if error}}
-              <div class="alert alert-danger">{{error}}</div>
-            {{/if}} -->
-
-
-        <!-- </div> -->
 
       </div><!-- /.container -->
     </div>

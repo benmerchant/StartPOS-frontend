@@ -7,8 +7,13 @@ function config($routeProvider, $locationProvider){
     controller: 'indexCtrl',
     templateUrl: 'assets/partials/home.html'
   })
+  .when('/dashboard', {
+    controller: 'dashboardCtrl',
+    templateUrl: 'assets/partials/dashboard.html'
+  })
   .when('/employees', {
     controller: 'employeeCtrl',
+    controllerAs: 'emps',
     templateUrl: 'assets/partials/employee.html'
   })
   .when('/menu', {

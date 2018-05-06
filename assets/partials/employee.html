@@ -1,1 +1,28 @@
 <h1>employees</h1>
+
+<div class="myButtons">
+  <button class="btn btn-primary">Add a New Employee</button>
+  <button class="btn btn-danger">Deactivate Employee</button>
+</div>
+<hr>
+<p>Click employee number for detailed view</p>
+<div class="myTable">
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Emp No.</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Hire Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="empObj in emps.employees">
+        <td><a href="">{{empObj.login_number}}</a></td>
+        <td>{{empObj.first_name}} {{empObj.last_name}}</td>
+        <td>Repeat a Dropdown here</td>
+        <td>{{empObj.hire_date | date: 'longDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
