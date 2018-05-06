@@ -1,14 +1,15 @@
-angular.module('app').service('getEmpsService', EmployeeService);
+angular.module('app').service('updateEmpService', UpdateEmployeeService);
 
-EmployeeService.$inject = ['$http'];
+UpdateEmployeeService.$inject = ['$http'];
 
 var apiGetEmployeeURL = 'http://localhost:3005/api/employees';
 
-function EmployeeService($http){
-  console.log('EmployeeService');
-  this.getEmployees = function(cb){
-    $http.get(
-      apiGetEmployeeURL
+function UpdateEmployeeService($http){
+  console.log('updateEmpService');
+  this.updateEmp = function(empID, data, cb){
+    $http.put(
+      apiGetEmployeeURL +'/' + empID,
+      data
     ).then(function(response){
       if(response.status===200){
         console.log('api call successful. Response:');

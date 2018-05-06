@@ -14,7 +14,12 @@ function config($routeProvider, $locationProvider){
   .when('/employees', {
     controller: 'employeeCtrl',
     controllerAs: 'emps',
-    templateUrl: 'assets/partials/employee.html'
+    templateUrl: 'assets/partials/employees.view.html'
+  })
+  .when('/employees/:id/edit', {
+    controller: 'oneEmployeeCtrl',
+    controllerAs: 'emp',
+    templateUrl: 'assets/partials/employee.view.html'
   })
   .when('/menu', {
     controller: 'menuCtrl',

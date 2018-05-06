@@ -1,0 +1,55 @@
+<h1>employee: {{emp.employee.display_name}}</h1>
+<div class="myButtons mb-4">
+  <a class="btn btn-primary text-white">Update Info</a>
+  <a class="btn btn-danger text-white">Update Availability</a>
+</div>
+<div class="oneEmpTable">
+  <table class="table table-sm">
+    <tbody>
+      <tr>
+        <th>Employee No</th>
+        <td>{{emp.employee.login_number}}</td>
+      </tr>
+      <tr>
+        <th>First Name</th>
+        <td empid="emp.employee._id" id="first_name" editinfo="emp.employee.first_name"></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td empid="emp.employee._id" id="last_name" editinfo="emp.employee.last_name"></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td>{{emp.employee.gender}}</td>
+      </tr>
+      <tr>
+        <th>Date of Birth</th>
+        <td>{{emp.employee.birth_date | date: 'fullDate'}}</td>
+      </tr>
+      <tr>
+        <th>Roles</th>
+        <td>
+          <span ng-if="emp.employee.roles.length == 0">No roles assigned yet</span>
+          <div ng-if="emp.employee.roles.length > 0" ng-repeat="role in emp.employee.roles">
+
+            {{role.name}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{emp.employee.email}}</td>
+      </tr>
+      <tr>
+        <th>Availability</th>
+        <td>
+          <div ng-repeat="(day,times) in emp.employee.availability">
+            {{day}}:
+            <span ng-if="!times.available">Employee not available</span>
+            <span ng-if="times.available">{{times.start_time}} - {{times.end_time}}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
