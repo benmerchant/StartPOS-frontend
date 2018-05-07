@@ -28,13 +28,51 @@
         <td>
           <span ng-if="emp.employee.roles.length == 0">
             No roles assigned yet
-            <button class="btn btn-danger btn-sm" ng-click="emp.addRole()">
+            <button ng-hide="emp.roleEditor" class="btn btn-danger btn-sm" ng-click="emp.addRole()">
               Assign Roles to {{emp.employee.first_name}}
             </button>
           </span>
           <div ng-if="emp.employee.roles.length > 0" ng-repeat="role in emp.employee.roles">
-
             {{role.name}}
+          </div>
+          <div ng-if="emp.roleEditor" class="border p-3">
+            <form name="assignRoleForm" novalidate ng-submit="emp.assignRole($event, emp.employee._id)" onsubmit="event.returnValue = false; return false;">
+              <div class="form-group row"  ng-repeat="r in emp.roles">
+                <div class="col-sm-1 form-check">
+                  <input class="form-check-input" name="role-{{r._id}}" type="checkbox" ng-model="localbool" value="{{r.name}}" ng-checked="emp.checkEnabled">
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" name="name-{{r.name}}" class="form-control-plaintext" ng-model="r.name" ng-disabled="1">
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" name="pay-{{r.name}}" ng-model="r.granular_pay" class="form-control" ng-disabled="!localbool">
+                </div>
+                <div class="col-sm-2">
+                  <p ng-if="r.salaried">
+                    per year
+                    <input type="hidden" name="sal-{{r.name}}" value="true" ng-disabled="!localbool">
+                  </p>
+                  <p ng-if="!r.salaried">
+                    per hour
+                    <input type="hidden" name="sal-{{r.name}}" value="false" ng-disabled="!localbool">
+                  </p>
+
+                </div>
+                <div class="col-sm-2">
+                  <p ng-if="r.manager_privileges">
+                    Manager Privileges
+                    <input type="hidden" name="man-{{r.name}}" value="true" ng-disabled="!localbool">
+                  </p>
+                  <p ng-if="!r.manager_privileges">
+                    No Manager Privileges
+                    <input type="hidden" name="man-{{r.name}}" value="false" ng-disabled="!localbool">
+                  </p>
+                </div>
+              </div> <!-- end ng-repeat -->
+              <div class="row">
+                <input class="btn btn btn-success mx-auto" type="submit" style="width:200px" value="Assign New Role(s)">
+              </div>
+            </form>
           </div>
         </td>
       </tr>

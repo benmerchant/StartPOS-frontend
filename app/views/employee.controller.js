@@ -6,9 +6,17 @@ function EmployeeController($scope, getEmpsService){
   console.log('employeeCtrl');
   var vm = this;
 
-  getEmpsService.getEmployees(function(results){
-    vm.employees = results.employees;
-  });
+  initController();
+
+  function initController(){
+    getEmpsService.getEmployees(function(results){
+      vm.employees = results.employees;
+    });
+  };
+
+
+
+
 
 
 };
