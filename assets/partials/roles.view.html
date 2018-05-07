@@ -1,8 +1,11 @@
 <h1>roles</h1>
 <div class="alert alert-success" ng-show="role.addSuccess">
-  New Role Successfully Addedd
+  New Role Successfully Added
 </div>
-<div class="myButtons" ng-hide="role.showForm">
+<div class="alert alert-success" ng-show="role.delSuccess">
+  Role Successfully Deleted
+</div>
+<div class="myButtons mb-4" ng-hide="role.showForm">
   <button ng-click="role.showRoleForm()" class="btn btn-primary">Add a Role</button>
 </div>
 <div class="row" ng-if="role.showForm" class="mb-4">
@@ -37,6 +40,7 @@
       <input value="Add New Role" type="submit" class="btn btn-primary btn-block mx-auto" ng-disabled="addRoleForm.$invalid" style="width: 150px">
     </div>
   </form>
+  <button class="btn btn-danger" ng-click="role.cancelAdd()">Cancel</button>
 </div>
 <table class="table">
   <thead>
@@ -44,15 +48,24 @@
     <th>Base Pay</th>
     <th>Position Type</th>
     <th>Manager Privileges</th>
+    <th>Modifications</th>
   </thead>
   <tbody>
     <tr ng-repeat="r in role.roles">
       <td>{{r.name}}</td>
+
       <td >{{r.granular_pay | currency: ''}}</td>
+
       <td ng-if="r.salaried">Salaried</td>
       <td ng-if="!r.salaried">Hourly</td>
+
       <td ng-if="r.manager_privileges">Yes</td>
       <td ng-if="!r.manager_privileges">No</td>
+
+      <td>
+        <button class="btn btn-warning btn-sm" ng-click="role.editRole()" style="width:61px">Edit</button>
+        <button class="btn btn-danger btn-sm" ng-click="role.deleteRole(r._id)" style="width:61px">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>
