@@ -1,0 +1,58 @@
+<h1>roles</h1>
+<div class="alert alert-success" ng-show="role.addSuccess">
+  New Role Successfully Addedd
+</div>
+<div class="myButtons" ng-hide="role.showForm">
+  <button ng-click="role.showRoleForm()" class="btn btn-primary">Add a Role</button>
+</div>
+<div class="row" ng-if="role.showForm" class="mb-4">
+  <form name="addRoleForm" novalidate ng-submit="role.sendNewRole()">
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input ng-model="role.newRole.name" class="form-control" type="text" name="name" id="name" placeholder="New Role Name" required>
+      </div>
+      <div class="col-sm-3">
+        <input ng-model="role.newRole.granular_pay" ng-pattern="/^[0-9]{1,7}\.[0-9]{2}$/" ng-class="{'text-danger': addRoleForm.granular_pay.$dirty && !addRoleForm.granular_pay.$valid}" class="form-control" type="text" name="granular_pay" placeholder="Base Pay" required>
+      </div>
+      <div class="col-sm-3">
+        Salaried? <br>
+        <div class="form-check">
+          <input ng-model="role.newRole.salaried" type="radio" class="form-check-input" name="salaried" value="true" ng-value="true"> Yes
+        </div>
+        <div class="form-check">
+          <input ng-model="role.newRole.salaried" type="radio" class="form-check-input" name="salaried" value="false"> No
+        </div>
+      </div>
+      <div class="col-sm-3">
+        Managerial Privileges? <br>
+        <div class="form-check">
+          <input ng-model="role.newRole.manager_privileges" type="radio" class="form-check-input" name="manager_privileges" value="true" ng-value="true"> Yes
+        </div>
+        <div class="form-check">
+          <input ng-model="role.newRole.manager_privileges" type="radio" class="form-check-input" name="manager_privileges" value="false"> No
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <input value="Add New Role" type="submit" class="btn btn-primary btn-block mx-auto" ng-disabled="addRoleForm.$invalid" style="width: 150px">
+    </div>
+  </form>
+</div>
+<table class="table">
+  <thead>
+    <th>Role</th>
+    <th>Base Pay</th>
+    <th>Position Type</th>
+    <th>Manager Privileges</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="r in role.roles">
+      <td>{{r.name}}</td>
+      <td >{{r.granular_pay | currency: ''}}</td>
+      <td ng-if="r.salaried">Salaried</td>
+      <td ng-if="!r.salaried">Hourly</td>
+      <td ng-if="r.manager_privileges">Yes</td>
+      <td ng-if="!r.manager_privileges">No</td>
+    </tr>
+  </tbody>
+</table>

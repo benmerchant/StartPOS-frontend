@@ -10,4 +10,10 @@ function EmployeeController($scope, getEmpsService, $routeParams){
     vm.employee = results;
   });
 
+  // section for adding roles
+  vm.roleEditor = false;
+  vm.addRole = function(){
+    console.log('add role function');
+    vm.roleEditor = true;
+  };
 };
