@@ -1,0 +1,50 @@
+<h1>add new employee</h1>
+<div class="alert alert-success" ng-show="addEmp.addSuccess">
+  Successfully added employee. Click here to add availabillity info.
+</div>
+<form name="addEmpForm" novalidate ng-submit="addEmp.addEmployee()">
+  <div class="form-group row">
+    <label class="col-sm-3" for="email" ng-class="{'text-danger': addEmpForm.email.$dirty && !addEmpForm.email.$valid}">Email</label>
+    <div class="col-sm-9">
+      <input ng-class="{'text-danger': addEmpForm.email.$dirty && !addEmpForm.email.$valid}" type="email" class="form-control" name="email" id="email" ng-model="addEmp.newEmp.email" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3" for="first_name" ng-class="{'text-danger': addEmpForm.first_name.$dirty && !addEmpForm.first_name.$valid}">First Name</label>
+    <div class="col-sm-9">
+      <input  type="text" class="form-control" name="first_name" id="first_name" ng-model="addEmp.newEmp.first_name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3" for="last_name" ng-class="{'text-danger': addEmpForm.last_name.$dirty && !addEmpForm.last_name.$valid}">Last Name</label>
+    <div class="col-sm-9">
+      <input  type="text" class="form-control" name="last_name" id="last_name" ng-model="addEmp.newEmp.last_name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3" for="ssn" ng-class="{'text-danger': addEmpForm.ssn.$dirty && !addEmpForm.ssn.$valid}">SSN</label>
+    <div class="col-sm-9">
+      <input ng-pattern="/^[0-9]{9}$/"  ng-class="{'text-danger': addEmpForm.ssn.$dirty && !addEmpForm.ssn.$valid}" type="text" class="form-control" name="ssn" id="ssn" ng-model="addEmp.newEmp.ssn" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="birth_date" class="col-sm-3">Birth Date</label>
+    <div class="col-sm-9">
+      <input class="form-control" type="date" name="birth_date" ng-model="addEmp.newEmp.birth_date">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="gender" class="col-sm-3">Gender</label>
+    <div class="col-sm-9">
+      <select class="form-control" id="gender" name="gender" ng-model="addEmp.newEmp.gender">
+        <option disabled selected value="default">Select Gender</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Non-binary">Non-binary</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <input value="Add Employee" type="submit" class="btn btn-primary btn-block mx-auto" ng-disabled="addEmpForm.$invalid" style="width: 150px">
+  </div>
+</form>

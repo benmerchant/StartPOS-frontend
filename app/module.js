@@ -16,6 +16,11 @@ function config($routeProvider, $locationProvider){
     controllerAs: 'emps',
     templateUrl: 'assets/partials/employees.view.html'
   })
+  .when('/employees/create', {
+    controller: 'addEmpCtrl',
+    controllerAs: 'addEmp',
+    templateUrl: 'assets/partials/addEmp.view.html'
+  })
   .when('/employees/:id/edit', {
     controller: 'oneEmployeeCtrl',
     controllerAs: 'emp',

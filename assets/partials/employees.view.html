@@ -1,12 +1,15 @@
 <h1>employees</h1>
 
 <div class="myButtons">
-  <button class="btn btn-primary">Add a New Employee</button>
+  <a href="/employees/create" class="btn btn-primary">Add a New Employee</a>
   <button class="btn btn-danger">Deactivate Employee</button>
 </div>
 <hr>
-<p>Click employee number for detailed view and to edit</p>
-<div class="myTable">
+<p ng-if="emps.employees.length>0">Click employee number for detailed view and to edit</p>
+<div ng-if="emps.employees.length==0">
+  <h1 class="bg-dark text-warning">No employees in database yet. Click button above to add some.</h1>
+</div>
+<div class="myTable" ng-if="emps.employees.length>0">
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
