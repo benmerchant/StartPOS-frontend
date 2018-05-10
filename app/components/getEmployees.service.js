@@ -1,10 +1,12 @@
 angular.module('app').service('getEmpsService', EmployeeService);
 
-EmployeeService.$inject = ['$http'];
+EmployeeService.$inject = ['$http', 'apiUrl'];
 
-var apiGetEmployeeURL = 'http://localhost:3005/api/employees';
 
-function EmployeeService($http){
+
+
+function EmployeeService($http, apiUrl){
+  var apiGetEmployeeURL = apiUrl + '/employees';
   console.log('EmployeeService');
   this.getEmployees = function(cb){
     $http.get(

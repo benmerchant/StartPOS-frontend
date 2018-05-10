@@ -1,10 +1,12 @@
 angular.module('app').service('addRoleService', AddRoleService);
 
-AddRoleService.$inject = ['$http'];
+AddRoleService.$inject = ['$http', 'apiUrl'];
 
-var apiRolesURL = 'http://localhost:3005/api/roles';
 
-function AddRoleService($http){
+
+
+function AddRoleService($http, apiUrl){
+  var apiRolesURL = apiUrl + '/roles';
   this.addRole = function(dataToPost, cb){
     $http.post(
       apiRolesURL,

@@ -1,8 +1,8 @@
 angular.module('app').controller('loginCtrl', LoginController);
 
-LoginController.$inject = ['$scope', '$http', '$cookies', '$rootScope', '$location'];
+LoginController.$inject = ['$scope', '$http', '$cookies', '$rootScope', '$location', 'apiUrl'];
 
-function LoginController($scope, $http, $cookies, $rootScope, $location){
+function LoginController($scope, $http, $cookies, $rootScope, $location, apiUrl){
   console.log('loginCtrl');
 
   initController();
@@ -16,7 +16,7 @@ function LoginController($scope, $http, $cookies, $rootScope, $location){
 
 
 
-  var apiLoginURL = 'http://localhost:3005/api/login';
+  var apiLoginURL = apiUrl + '/login';
 
   $scope.login = function(){
     $http.post(

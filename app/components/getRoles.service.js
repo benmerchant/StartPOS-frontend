@@ -1,10 +1,11 @@
 angular.module('app').service('getRolesService', GetRolesService);
 
-GetRolesService.$inject = ['$http'];
+GetRolesService.$inject = ['$http', 'apiUrl'];
 
-var apiGetRoles = 'http://localhost:3005/api/roles';
 
-function GetRolesService($http){
+
+function GetRolesService($http, apiUrl){
+  var apiGetRoles = apiUrl + '/roles';
   console.log('getRolesService');
   this.getRoles = function(cb){
     $http.get(

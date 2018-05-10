@@ -1,10 +1,11 @@
 angular.module('app').service('updateEmpService', UpdateEmployeeService);
 
-UpdateEmployeeService.$inject = ['$http'];
+UpdateEmployeeService.$inject = ['$http', 'apiUrl'];
 
-var apiGetEmployeeURL = 'http://localhost:3005/api/employees';
+;
 
-function UpdateEmployeeService($http){
+function UpdateEmployeeService($http, apiUrl){
+  var apiGetEmployeeURL = apiUrl + '/employees'
   console.log('updateEmpService');
   this.updateEmp = function(empID, data, cb){
     $http.put(

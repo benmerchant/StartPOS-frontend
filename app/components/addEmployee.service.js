@@ -1,10 +1,11 @@
 angular.module('app').service('addEmpService', AddEmployeeService);
 
-AddEmployeeService.$inject = ['$http'];
+AddEmployeeService.$inject = ['$http', 'apiUrl'];
 
-var apiGetEmployeeURL = 'http://localhost:3005/api/employees';
 
-function AddEmployeeService($http){
+
+function AddEmployeeService($http, apiUrl){
+  var apiGetEmployeeURL = apiUrl + '/employees';
   console.log('addEmpService');
   this.addEmp = function(data, cb){
     $http.post(

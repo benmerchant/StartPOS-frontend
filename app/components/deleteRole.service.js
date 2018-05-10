@@ -1,10 +1,11 @@
 angular.module('app').service('deleteRoleService', DeleteRoleService);
 
-DeleteRoleService.$inject = ['$http'];
+DeleteRoleService.$inject = ['$http', 'apiUrl'];
 
-var apiRolesURL = 'http://localhost:3005/api/roles';
 
-function DeleteRoleService($http){
+
+function DeleteRoleService($http, apiUrl){
+  var apiRolesURL = apiUrl + '/roles';
   this.deleteRole = function(roleID, cb){
     $http.delete(
       apiRolesURL +'/'+ roleID
