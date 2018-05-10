@@ -1,0 +1,45 @@
+<h1>day one: info about your store</h1>
+
+<div class="alert alert-success" ng-show="newStore.postSuccess">
+  Successfully created your store. Next add your store hours.
+</div>
+<div ng-if="!newStore.postSuccess">
+  <form name="createStoreForm" novalidate ng-submit="newStore.createStore()">
+    <div class="row">
+      <p>*all fields required</p>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3" for="storeNo" ng-class="{'text-danger': createStoreForm.storeNo.$dirty && !createStoreForm.storeNo.$valid}">Store Number (2-9 digits)</label>
+      <div class="col-sm-9">
+        <input ng-pattern="/^[0-9]{2,9}$/" ng-class="{'text-danger': createStoreForm.storeNo.$dirty && !createStoreForm.storeNo.$valid}" type="text" class="form-control" name="storeNo" id="storeNo" ng-model="newStore.storeObj.storeNo" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3" for="name" ng-class="{'text-danger': createStoreForm.name.$dirty && !createStoreForm.name.$valid}">Store Name</label>
+      <div class="col-sm-9">
+        <input ng-class="{'text-danger': createStoreForm.name.$dirty && !createStoreForm.name.$valid}" type="text" class="form-control" name="name" id="name" ng-model="newStore.storeObj.name" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3" for="state_tax" ng-class="{'text-danger': createStoreForm.state_tax.$dirty && !createStoreForm.state_tax.$valid}">State Tax (ex 6 or 5.5)</label>
+      <div class="col-sm-9">
+        <input ng-pattern="/^[0-9]{1}(\.[0-9]{1})?$/" ng-class="{'text-danger': createStoreForm.state_tax.$dirty && !createStoreForm.state_tax.$valid}" type="text" class="form-control" name="state_tax" id="state_tax" ng-model="newStore.storeObj.state_tax" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3" for="local_tax" ng-class="{'text-danger': createStoreForm.local_tax.$dirty && !createStoreForm.local_tax.$valid}">Local Tax</label>
+      <div class="col-sm-9">
+        <input ng-pattern="/^[0-9]{1}(\.[0-9]{1})?$/" ng-class="{'text-danger': createStoreForm.local_tax.$dirty && !createStoreForm.local_tax.$valid}" type="text" class="form-control" name="local_tax" id="local_tax" ng-model="newStore.storeObj.local_tax" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <input value="Create Store" type="submit" class="btn btn-primary btn-block mx-auto" ng-disabled="createStoreForm.$invalid" style="width: 150px">
+    </div>
+  </form>
+</div>
+<div ng-if="newStore.postSuccess">
+  <p>What would you like to do next?</p>
+  <a href="/storeHours" class="btn btn-primary">Update your store's hours of operation</a>
+  <a href="/diningAreas" class="btn btn-primary">Update your store's dining areas and add tables</a>
+</div>

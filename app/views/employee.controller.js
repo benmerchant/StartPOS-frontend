@@ -1,8 +1,8 @@
 angular.module('app').controller('employeeCtrl', EmployeeController);
 
-EmployeeController.$inject = ['$scope', 'getEmpsService'];
+EmployeeController.$inject = ['getEmpsService'];
 
-function EmployeeController($scope, getEmpsService){
+function EmployeeController(getEmpsService){
   console.log('employeeCtrl');
   var vm = this;
 

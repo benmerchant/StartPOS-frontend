@@ -1,0 +1,54 @@
+<!-- controllerAs: menuHeadings -->
+<h1>manage: menu headings</h1>
+<div class="alert alert-success" ng-show="menuHeadings.addSuccess">
+  New Role Successfully Added
+</div>
+<div class="myButtons mb-4" ng-hide="menuHeadings.showAddForm">
+  <button ng-click="menuHeadings.addNew()" class="btn btn-primary btn-lg">Add New Heading</button>
+</div>
+<div class="row" ng-if="menuHeadings.showAddForm" class="mb-4">
+  <form name="addMenuForm" novalidate ng-submit="menuHeadings.sendNewMenu()">
+    <div class="form-group row">
+
+      <input ng-model="menuHeadings.newMenu.name" class="form-control" type="text" name="name" id="name" placeholder="New Menu Heading Name" required>
+
+    </div>
+    <div class="form-group row">
+      <label for="printer" class="col-sm-3">Printer</label>
+      <div class="col-sm-9">
+        <select class="form-control" name="printer" id="printer" ng-model="menuHeadings.newMenu.printer">
+          <option ng-repeat="p in menuHeadings.printers" value="{{p._id}}-{{p.name}}">{{p.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <input value="Add New Menu Heading" type="submit" class="btn btn-primary" ng-disabled="addMenuForm.$invalid">
+    </div>
+  </form>
+  <button class="btn btn-danger" ng-click="menuHeadings.cancelAdd()">Cancel</button>
+</div>
+<hr>
+<div ng-if="menuHeadings.headings.length===0">
+  no menu headings yet
+</div>
+<div ng-if="menuHeadings.headings.length>0">
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Heading</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="h in menuHeadings.headings">
+        <tr>
+          <td>{{h.menu_heading}}</td>
+          <td>
+            <button ng-click="menuHeadings.edit()" class="btn btn-sm btn-primary" type="button">Edit</button>
+            <button ng-click="menuHeadings.delete()" class="btn btn-sm btn-danger" type="button">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

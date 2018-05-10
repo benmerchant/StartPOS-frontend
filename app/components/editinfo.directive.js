@@ -8,7 +8,6 @@ function EditDirective(updateEmpService){
     templateUrl: 'assets/partials/editinfo.view.html',
     scope: {
       value: '=editinfo',
-      field: '@fieldType',
       property: '@id',
       empID: '=empid'
     },

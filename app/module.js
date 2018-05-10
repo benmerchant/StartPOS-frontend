@@ -39,6 +39,26 @@ function config($routeProvider, $locationProvider){
     controller: 'loginCtrl',
     templateUrl: 'assets/partials/login.html'
   })
+  .when('/newStore', {
+    controller: 'createStoreCtrl',
+    controllerAs: 'newStore',
+    templateUrl: 'assets/partials/createStore.view.html'
+  })
+  .when('/storeHours', {
+    controller: 'storeHoursCtrl',
+    controllerAs: 'hours',
+    templateUrl: 'assets/partials/storeHours.view.html'
+  })
+  .when('/diningAreas', {
+    controller: 'diningAreasCtrl',
+    controllerAs: 'diningAreas',
+    templateUrl: 'assets/partials/diningAreas.view.html'
+  })
+  .when('/menu/headings', {
+    controller: 'menuHeadingsCtrl',
+    controllerAs: 'menuHeadings',
+    templateUrl: 'assets/partials/menuheadings.view.html'
+  })
   .otherwise({
     template: '<h1>404</h1>'
   });
@@ -49,10 +69,10 @@ run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
 function run($rootScope, $location, $cookies, $http){
   // not really worried if user stays logged in after refresh
   // as you can't refresh anything but the index right now anyways
-  // $rootScope.globals = $cookies.getObject('globals') || {};
-  // if($rootScope.globals.currentUser){
-  //   $http.defaults.headers.common['Authorization'] = 'JWT' + $rootScope.globals.currentUser.token;
-  // } else {
-  //   $rootScope.globals.auth = false;
-  // }
+  $rootScope.globals = $cookies.getObject('globals') || {};
+  if($rootScope.globals.currentUser){
+    $http.defaults.headers.common['Authorization'] = 'JWT' + $rootScope.globals.currentUser.token;
+  } else {
+    $rootScope.globals.auth = false;
+  }
 };

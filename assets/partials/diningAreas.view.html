@@ -1,0 +1,68 @@
+<!-- controllerAs: diningAreas -->
+<h1>dining areas/table management</h1>
+<div class="alert alert-success" ng-show="diningAreas.addSuccess">
+  New Dining Area Successfully Added
+</div>
+<div class="alert alert-success" ng-show="diningAreas.addTableSuccess">
+  New Table Successfully Added
+</div>
+<div class="myButtons mb-4" ng-hide="diningAreas.showNewForm">
+  <button ng-click="diningAreas.showDiningForm()" class="btn btn-primary">Add a New Dining Area</button>
+</div>
+<div class="row" ng-if="diningAreas.showNewForm" class="mb-4">
+  <form name="addAreaForm" novalidate ng-submit="diningAreas.sendNewArea()">
+    <div class="form-group row">
+      <div class="">
+        <input ng-model="diningAreas.newArea.name" class="form-control" type="text" name="name" id="name" placeholder="New Dining Area Name" required>
+      </div>
+
+    </div>
+    <div class="row">
+      <input value="Add New Dining Area" type="submit" class="btn btn-primary btn-block mx-auto" ng-disabled="addAreaForm.$invalid" style="width: 250px">
+
+    </div>
+  </form>
+  <div class="">
+    <button class="btn btn-danger" ng-click="diningAreas.cancelAdd()">Cancel</button>
+  </div>
+</div> <!-- #end add dining area form div -->
+<hr>
+<div ng-if="diningAreas.niceAreas.length===0">
+  <h3 class="text-danger">No Dining Areas Yet. Click above to add some</h3>
+</div>
+<div ng-if="diningAreas.niceAreas.length>0">
+  <div ng-if="diningAreas.showAddTableForm">
+    <form name="addTableForm" novalidate ng-submit="diningAreas.sendNewTable(diningAreas.editAreaObj.id)">
+      <div class="form-group row">
+        <div class="">
+          <input ng-model="diningAreas.newTable.name" class="form-control" type="text" name="name" id="name" placeholder="New Table Name" required>
+        </div>
+        <div class="">
+          <input ng-pattern="/^[0-9]{0,3}$/" ng-model="diningAreas.newTable.seats" class="form-control" type="text" name="seats" id="seats" placeholder="Number of Seats" ng-class="{'text-danger': addTableForm.seats.$dirty && !addTableForm.seats.$valid}" required>
+        </div>
+      </div>
+      <div class="row">
+        <input value="Add Table to {{diningAreas.editAreaObj.name}}" type="submit" class="btn btn-primary" ng-disabled="addTableForm.$invalid">
+
+      </div>
+    </form>
+    <div class="">
+      <button class="btn btn-danger" ng-click="diningAreas.cancelNewTable()">Cancel</button>
+    </div>
+    <hr>
+  </div> <!-- #end add table form -->
+  <div ng-repeat="area in diningAreas.niceAreas">
+    <strong>{{area.name}}</strong>:
+    <div ng-if="area.tables.length===0">
+      No tables in this dining area yet
+    </div>
+    <div ng-if="area.tables.length>0">
+      <div ng-repeat="table in area.tables">
+        <span>{{table.table.name}}</span>
+      </div>
+    </div>
+    <button class="btn btn-warning btn-sm" ng-click="diningAreas.addTables(area._id, area.name)">Add Tables</button>
+    <button class="btn btn-danger btn-sm" ng-click="diningAreas.deleteArea(area._id, area.name)">Delete Dining Area</button>
+  </div>
+
+</div>
